@@ -1,12 +1,20 @@
-import star from './assets/icon-star.svg';
-import thank from './assets/illustration-thank-you.svg';
+import { useState } from 'react';
+import Rating from './components/Rating.jsx';
+import Thank from './components/Thank.jsx';
+
 function App() {
+  let [rating, setRating] = useState(0);
+  let [submit, setSubmit] = useState(false);
+  console.log(submit);
+
   return (
-    <div className="App flex flex-col justify-center items-center w-screen h-screen">
-      <p className="font-bold text-LightGrey font-Overpass ">asdasd</p>
-      <img src={star} alt="star icon" />
-      <img src={thank} alt="thank you" />
-    </div>
+    <main className="App flex flex-col justify-center items-center w-screen min-h-screen bg-VeryDarkBlue font-Overpass">
+      {submit ? (
+        <Thank rating={rating} />
+      ) : (
+        <Rating setRating={setRating} rating={rating} setSubmit={setSubmit} />
+      )}
+    </main>
   );
 }
 
